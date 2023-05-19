@@ -5,21 +5,22 @@ import java.util.Random;
 
 public class Wordle {
     private Random rand;
-    private ArrayList<wordOTG> wordlist;
+    private ArrayList<wordOTG> wordList;
+    private int currentIndex;
     
     public Wordle(){
         rand = new Random();
-        wordlist = new ArrayList<>(wordlist);
+        wordList = new ArrayList<>(wordList);
     }
 
     public Boolean addWord(String word) {
-        for (wordOTG wordOTG : wordlist) {
+        for (wordOTG wordOTG : wordList) {
             if(wordOTG.getWord().equalsIgnoreCase(word) == true){
                 return false;
             }
         }
 
-        wordlist.add(new wordOTG(word));
+        wordList.add(new wordOTG(word));
         return true;
     }
 
@@ -27,7 +28,7 @@ public class Wordle {
         int count = 0;
         int numWords = 0;
         
-        for (wordOTG wordOTG : wordlist) {
+        for (wordOTG wordOTG : wordList) {
             if(wordOTG.getWord().length() == 4){
                 numWords++;
             }
@@ -42,16 +43,17 @@ public class Wordle {
     }
 
     public void removeWord(String name){
-        for (wordOTG wordOTG : wordlist) {
+        for (wordOTG wordOTG : wordList) {
             if(wordOTG.getWord().equals(name) == true){
-                wordlist.remove(wordOTG);
+                wordList.remove(wordOTG);
             }
         }
     }
 
     public String selectWord(){
-        
-
-        return "0";
+        int choice = rand.nextInt(0, wordList.size());
+        currentIndex = choice;
+        String wordOTD = wordList.get(choice).getWord();
+        return wordOTD;
     }
 }
