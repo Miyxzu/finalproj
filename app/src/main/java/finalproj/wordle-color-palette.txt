@@ -1,0 +1,5 @@
+bg color = #121213
+incorrect letter = #3a3b3c
+correct letter, incorrect position = #b59f3a
+correct letter, correct position = #528d4e
+letter border = #2f3030

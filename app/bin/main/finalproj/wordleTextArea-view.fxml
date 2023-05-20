@@ -6,13 +6,13 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TitledPane animated="false" collapsible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Wordle" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="">
+<TitledPane animated="false" collapsible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Wordle Setup" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finalproj.wordleTxtController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>
             <Label layoutX="32.0" layoutY="5.0" text="Enter in 5-letter words that will be used in Wordle (Make sure each word is in its own line)" />
-            <TextArea fx:id="txtArea" layoutX="19.0" layoutY="26.0" prefHeight="300.0" prefWidth="550.0" promptText="Enter words" />
-            <Button fx:id="btnEnter" layoutX="471.0" layoutY="334.0" mnemonicParsing="false" onAction="#onBtnEnter" opacity="0.5" prefHeight="30.0" prefWidth="100.0" text="btnEnter" />
+            <TextArea fx:id="txtArea" layoutX="24.0" layoutY="25.0" prefHeight="300.0" prefWidth="550.0" promptText="Enter words" style="-fx-border-width: 1px; -fx-border-color: #000;" />
+            <Button fx:id="btnEnter" layoutX="471.0" layoutY="334.0" mnemonicParsing="false" onAction="#onBtnEnter" prefHeight="30.0" prefWidth="100.0" text="Continue" />
          </children></AnchorPane>
   </content>
 </TitledPane>

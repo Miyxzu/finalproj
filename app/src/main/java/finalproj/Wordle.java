@@ -6,8 +6,7 @@ import java.util.Random;
 public class Wordle {
     private Random rand;
     private ArrayList<wordOTG> wordList;
-    private int currentIndex;
-    
+
     public Wordle(){
         rand = new Random();
         wordList = new ArrayList<>(wordList);
@@ -24,7 +23,19 @@ public class Wordle {
         return true;
     }
 
-    public Boolean countWords(){
+    public int countWords(){
+        int numWords = 0;
+        
+        for (wordOTG wordOTG : wordList) {
+            if(wordOTG.getWord().length() == 4){
+                numWords++;
+            }
+        }
+
+        return numWords;
+    }
+
+    public Boolean ifCountSame() {
         int count = 0;
         int numWords = 0;
         
@@ -52,7 +63,6 @@ public class Wordle {
 
     public String selectWord(){
         int choice = rand.nextInt(0, wordList.size());
-        currentIndex = choice;
         String wordOTD = wordList.get(choice).getWord();
         return wordOTD;
     }
