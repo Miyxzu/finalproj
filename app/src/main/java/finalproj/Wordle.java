@@ -9,7 +9,7 @@ public class Wordle {
 
     public Wordle(){
         rand = new Random();
-        wordList = new ArrayList<>(wordList);
+        wordList = new ArrayList<>();
     }
 
     public Boolean addWord(String word) {
@@ -27,7 +27,7 @@ public class Wordle {
         int numWords = 0;
         
         for (wordOTG wordOTG : wordList) {
-            if(wordOTG.getWord().length() == 4){
+            if(wordOTG.getWord().length() == 5){
                 numWords++;
             }
         }
@@ -40,7 +40,7 @@ public class Wordle {
         int numWords = 0;
         
         for (wordOTG wordOTG : wordList) {
-            if(wordOTG.getWord().length() == 4){
+            if(wordOTG.getWord().length() == 5){
                 numWords++;
             }
             count++;
@@ -59,6 +59,10 @@ public class Wordle {
                 wordList.remove(wordOTG);
             }
         }
+    }
+
+    public void clearList(){
+        wordList.clear();
     }
 
     public String selectWord(){
