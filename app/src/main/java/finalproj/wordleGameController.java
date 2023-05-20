@@ -28,5 +28,5 @@ public class wordleGameController {
     @FXML
     private Label label26, label27, label28, label29, label30;
 
-        
+    
 }
