@@ -70,7 +70,7 @@ public class wordleTxtController {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == playBtn) {
-                // openWordleBoard();
+                openWordleBoard();
             } else if (result.isPresent() && result.get() == closeBtn) {
                 wordle.clearList();
             } else {

@@ -1,32 +1,78 @@
 package finalproj;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 
 public class wordleGameController {
     //Row 1
     @FXML
-    private Label label1, label2, label3, label4, label5;
-
+    private Label letter1, letter2, letter3, letter4, letter5;
     //Row 2
     @FXML
-    private Label label6, label7, label8, label9, label10;
-
+    private Label letter6, letter7, letter8, letter9, letter10;
     //Row 3
     @FXML
-    private Label label11, label12, label13, label14, label15;
-
+    private Label letter11, letter12, letter13, letter14, letter15;
     //Row 4
     @FXML
-    private Label label16, label17, label18, label19, label20;
-
+    private Label letter16, letter17, letter18, letter19, letter20;
     //Row 5
     @FXML
-    private Label label21, label22, label23, label24, label25;
-
+    private Label letter21, letter22, letter23, letter24, letter25;
     //Row 6
     @FXML
-    private Label label26, label27, label28, label29, label30;
-
+    private Label letter26, letter27, letter28, letter29, letter30;
     
+    @FXML
+    private Label label;
+
+    @FXML
+    private TextField txtGuess;
+
+    @FXML
+    private GridPane gridPane;
+
+    @FXML
+    private Button btnGuess, btnStart;
+
+
+    private Wordle wordle = new Wordle();
+
+    boolean check1 = false, check2 = false, check3 = false, 
+            check4 = false, check5 = false, check6 = false;
+
+    @FXML
+    public void onBtnStart() {
+        String chosenWord = wordle.selectWord();
+        btnStart.setDisable(true);
+        btnStart.setVisible(false);
+        setAllVisible();
+        
+    }
+
+    @FXML
+    public void onBtnGuess(ActionEvent event) {
+        if(check1) {
+            
+        } else if(check2) {
+            
+        } else if(check3) {
+
+        } else if(check4) {
+
+        } else if(check5) {
+
+        } else if (check6) {
+
+        }
+    }
+
+    public void setAllVisible() {
+        gridPane.setOpacity(1);
+        btnGuess.setOpacity(1);
+        txtGuess.setOpacity(1);
+        label.setOpacity(1);
+    }
 }
