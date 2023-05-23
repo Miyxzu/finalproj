@@ -6,6 +6,7 @@ import java.util.Random;
 public class Wordle {
     private Random rand;
     private ArrayList<wordOTG> wordList;
+    private int index;
 
     public Wordle(){
         rand = new Random();
@@ -67,6 +68,8 @@ public class Wordle {
 
     public String selectWord(){
         int choice = rand.nextInt(0, wordList.size());
+        index = choice;
+        wordList.get(choice).setChosenWord(true);
         String wordOTD = wordList.get(choice).getWord();
         return wordOTD;
     }

@@ -1,7 +1,7 @@
 package finalproj;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*;;
+import javafx.scene.control.*;
 
 public class wordleGameController {
     //Row 1

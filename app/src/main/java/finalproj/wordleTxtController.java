@@ -28,6 +28,7 @@ public class wordleTxtController {
     @FXML
     public void onBtnEnter(ActionEvent event) {
         int count = 0;
+        boolean check = true;
         String[] lines;
         String reoccuring = "";
         String text = txtArea.getText();
@@ -35,29 +36,30 @@ public class wordleTxtController {
 
         for (String line : lines) {
             String[] words = line.split("\\s+");
-                for (String word : words) {
-                    if(wordle.addWord(word) == false) {
-                        reoccuring = word;
-                        alert = new Alert(AlertType.ERROR);
-                        alert.setTitle("Error");
-                        alert.setHeaderText("Error: Already Existing Word in List");
-                        alert.setContentText(reoccuring + " already exists in the list, please remove the duplicate");
-                        alert.show();
+            for (String word : words) {
+                if(wordle.addWord(word) == false) {
+                    check = false;
+                    reoccuring = word;
+                    alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Error: Already Existing Word in List");
+                    alert.setContentText(reoccuring + " already exists in the list, please remove the duplicate");
+                    alert.show();
                     wordle.clearList();
-                    break ;
+                    break;
                 }
                 count++;
             }
         }
 
-         if(!wordle.ifCountSame()) {
+        if(!wordle.ifCountSame()) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Error: 1 or more words are not equal to 4 letters");
             alert.setContentText("There are " + (count - wordle.countWords()) + " word(s) that have more or less than 4 letters, please change the words");
             alert.show();
             wordle.clearList();
-        }else{
+        }else if (wordle.ifCountSame() == true && check == true){
             alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
             alert.setContentText("There are " + wordle.countWords() + " words in the list, would you like to play with these words or edit the list?");
@@ -74,6 +76,8 @@ public class wordleTxtController {
             } else {
 
             }
+        } else {
+            
         }
     }
 
