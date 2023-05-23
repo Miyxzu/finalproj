@@ -11,7 +11,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="600.0" style="-fx-background-color: #121213;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finalproj.wordleGameController">
    <children>
-      <GridPane layoutX="50.0" layoutY="45.0" prefHeight="600.0" prefWidth="500.0">
+      <GridPane fx:id="gridPane" layoutX="50.0" layoutY="45.0" opacity="0.0" prefHeight="600.0" prefWidth="500.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -28,157 +28,157 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter2" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="2" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="letter2" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="2" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter3" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="3" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="letter3" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="3" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter4" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="4" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="letter4" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="4" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter5" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="5" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="letter5" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="5" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter6" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="6" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="letter6" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="6" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter7" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="7" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="letter7" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="7" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter8" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="8" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="letter8" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="8" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter9" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="9" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="letter9" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="9" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter10" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="10" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="letter10" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="10" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter11" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="11" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label fx:id="letter11" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="11" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter12" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="12" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label fx:id="letter12" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="12" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter13" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="13" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label fx:id="letter13" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="13" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter14" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="14" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label fx:id="letter14" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="14" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter15" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="15" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label fx:id="letter15" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="15" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter16" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="16" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label fx:id="letter16" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="16" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter17" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="17" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label fx:id="letter17" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="17" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter18" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="18" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label fx:id="letter18" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="18" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter19" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="19" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label fx:id="letter19" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="19" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter20" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="20" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label fx:id="letter20" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="20" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter1" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="1" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="letter1" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="1" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter21" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="21" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Label fx:id="letter21" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="21" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter22" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="22" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Label fx:id="letter22" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="22" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter23" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="23" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Label fx:id="letter23" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="23" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter24" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="24" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Label fx:id="letter24" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="24" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter25" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="25" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Label fx:id="letter25" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="25" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter26" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="26" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+            <Label fx:id="letter26" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="26" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter27" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="27" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+            <Label fx:id="letter27" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="27" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter28" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="28" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+            <Label fx:id="letter28" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="28" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter29" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="29" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+            <Label fx:id="letter29" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="29" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
             </Label>
-            <Label fx:id="letter30" opacity="0.0" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="30" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+            <Label fx:id="letter30" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" text="30" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                <font>
                   <Font size="64.0" />
                </font>
