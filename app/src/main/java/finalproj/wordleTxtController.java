@@ -83,10 +83,10 @@ public class wordleTxtController {
 
     private void openWordleBoard() {
         try {
-            FXMLLoader fxml = new FXMLLoader(getClass().getResource("app/src/main/resources/finalproj/wordleGameplayMock-view.fxml"));
+            FXMLLoader fxml = new FXMLLoader(getClass().getResource("app/src/main/resources/finalproj/wordleGameplay-view.fxml"));
             Parent root = fxml.load();
             wordleGameController wordleBoard = fxml.getController();
-            Scene scene = new Scene(root, 600, 400);
+            Scene scene = new Scene(root, 600, 750);
             Stage boardStage = new Stage(null);
             boardStage.setScene(scene);
             boardStage.show();

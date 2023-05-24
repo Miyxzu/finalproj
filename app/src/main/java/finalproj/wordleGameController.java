@@ -40,22 +40,33 @@ public class wordleGameController {
 
     private Wordle wordle = new Wordle();
 
-    boolean check1 = false, check2 = false, check3 = false, 
-            check4 = false, check5 = false, check6 = false;
+    private boolean check1 = false, check2 = false, check3 = false, 
+                    check4 = false, check5 = false, check6 = false;
+
+    private String chosenWord;
 
     @FXML
     public void onBtnStart() {
-        String chosenWord = wordle.selectWord();
+        chosenWord = wordle.selectWord();
         btnStart.setDisable(true);
         btnStart.setVisible(false);
         setAllVisible();
-        
+        check1 = true;
     }
 
     @FXML
     public void onBtnGuess(ActionEvent event) {
+        String guess = txtGuess.getText();
+
         if(check1) {
-            
+            for (int i = 0; i < guess.length() - 1; i++) {
+                if(guess.charAt(i) == chosenWord.charAt(i)){
+                    
+                }
+                if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
+
+                }
+            }
         } else if(check2) {
             
         } else if(check3) {
