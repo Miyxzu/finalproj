@@ -255,7 +255,7 @@ public class wordleGameController {
                 Dialog<ButtonType> dialog = new Dialog<>();
                 dialog.setTitle("Unfortunate");
 
-                Image img = new Image(getClass().getResourceAsStream(""));
+                Image img = new Image(getClass().getResourceAsStream("negative-squared-cross-mark-emoji-512x512-k111iswl.png"));
                 ImageView imgView = new ImageView(img);
                 imgView.setFitWidth(100);
                 imgView.setPreserveRatio(true);
@@ -306,7 +306,7 @@ public class wordleGameController {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Congratulations");
 
-        Image img = new Image(getClass().getResourceAsStream(""));
+        Image img = new Image(getClass().getResourceAsStream("white-heavy-check-mark-emoji-by-twitter.png"));
         ImageView imgView = new ImageView(img);
         imgView.setFitWidth(100);
         imgView.setPreserveRatio(true);
