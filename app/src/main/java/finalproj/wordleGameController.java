@@ -38,16 +38,18 @@ public class wordleGameController {
     private Button btnGuess, btnStart;
 
 
-    private Wordle wordle = new Wordle();
+    wordleTxtController wtc = new wordleTxtController();
 
     private boolean check1 = false, check2 = false, check3 = false, 
                     check4 = false, check5 = false, check6 = false;
 
     private String chosenWord;
 
+
+
     @FXML
     public void onBtnStart() {
-        chosenWord = wordle.selectWord();
+        chosenWord = wtc.wordle.selectWord();
         btnStart.setDisable(true);
         btnStart.setVisible(false);
         setAllVisible();
@@ -56,13 +58,18 @@ public class wordleGameController {
 
     @FXML
     public void onBtnGuess(ActionEvent event) {
+    
         String guess = txtGuess.getText();
 
         if(check1) {
-            for (int i = 0; i < guess.length() - 1; i++) {
+            int count = 0;
+            for (int i = 0; i < guess.length(); i++) {
                 Label letter = getLabelByIndex(i);
 
+                letter.setText(guess.toUpperCase().substring(i, i+1));
+
                 if(guess.charAt(i) == chosenWord.charAt(i)){
+                    count++;
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
                 } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
@@ -70,13 +77,18 @@ public class wordleGameController {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
                 }
             }
+            
             check1 = false;
             check2 = true;
         } else if(check2) {
-            for (int i = 0; i < guess.length() - 1; i++) {
+            int count = 0;
+            for (int i = 0; i < guess.length(); i++) {
                 Label letter = getLabelByIndex(i+5);
 
+                letter.setText(guess.toUpperCase().substring(i, i+1));
+
                 if(guess.charAt(i) == chosenWord.charAt(i)){
+                    count++;
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
                 } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
@@ -84,13 +96,18 @@ public class wordleGameController {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
                 }
             }
+
             check2 = false;
             check3 = true;
         } else if(check3) {
-            for (int i = 0; i < guess.length() - 1; i++) {
+            int count = 0;
+            for (int i = 0; i < guess.length(); i++) {
                 Label letter = getLabelByIndex(i+10);
 
+                letter.setText(guess.toUpperCase().substring(i, i+1));
+
                 if(guess.charAt(i) == chosenWord.charAt(i)){
+                    count++;
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
                 } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
@@ -98,13 +115,18 @@ public class wordleGameController {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
                 }
             }
+
             check3 = false;
             check4 = true;
         } else if(check4) {
-            for (int i = 0; i < guess.length() - 1; i++) {
+            int count = 0;
+            for (int i = 0; i < guess.length(); i++) {
                 Label letter = getLabelByIndex(i+15);
 
+                letter.setText(guess.toUpperCase().substring(i, i+1));
+
                 if(guess.charAt(i) == chosenWord.charAt(i)){
+                    count++;
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
                 } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
@@ -112,27 +134,18 @@ public class wordleGameController {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
                 }
             }
+
             check4 = false;
             check5 = true;
         } else if(check5) {
-            for (int i = 0; i < guess.length() - 1; i++) {
+            int count = 0;
+            for (int i = 0; i < guess.length(); i++) {
                 Label letter = getLabelByIndex(i+20);
 
-                if(guess.charAt(i) == chosenWord.charAt(i)){
-                    letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
-                } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
-                    letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
-                } else {
-                    letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
-                }
-            }
-            check5 = false;
-            check6 = true;
-        } else if (check6) {
-            for (int i = 0; i < guess.length() - 1; i++) {
-                Label letter = getLabelByIndex(i+25);
+                letter.setText(guess.toUpperCase().substring(i, i+1));
 
                 if(guess.charAt(i) == chosenWord.charAt(i)){
+                    count++;
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
                 } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
@@ -140,7 +153,31 @@ public class wordleGameController {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
                 }
             }
-            check6 = false;
+
+            if(checkIfCorrect(count) == true){
+
+            } else {
+                check5 = false;
+                check6 = true;
+            }
+        } else if (check6) {
+            int count = 0;
+            for (int i = 0; i < guess.length(); i++) {
+                Label letter = getLabelByIndex(i+25);
+
+                letter.setText(guess.toUpperCase().substring(i, i+1));
+
+                if(guess.charAt(i) == chosenWord.charAt(i)){
+                    count++;
+                    letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
+                } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
+                    letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
+                } else {
+                    letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
+                }
+            }
+
+            checkIfCorrect(count);
         } else {
 
         }
@@ -151,6 +188,20 @@ public class wordleGameController {
         btnGuess.setOpacity(1);
         txtGuess.setOpacity(1);
         label.setOpacity(1);
+    }
+
+
+    private boolean checkIfCorrect(int i) {
+        String phrase = "";
+        if (i == 5) {
+            return true;
+        } else {
+            if(check6) {
+                
+                check6 = false;
+            }
+        }
+        return true;
     }
 
     private Label getLabelByIndex(int i){

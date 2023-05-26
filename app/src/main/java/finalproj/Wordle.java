@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Wordle {
     private Random rand;
-    private ArrayList<wordOTG> wordList;
+    private static ArrayList<wordOTG> wordList;
     private int index;
 
     public Wordle(){

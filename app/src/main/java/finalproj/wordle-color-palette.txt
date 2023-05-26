@@ -3,3 +3,10 @@ incorrect letter = #3a3b3c
 correct letter, incorrect position = #b59f3a
 correct letter, correct position = #528d4e
 letter border = #2f3030
+
+1st guess = Genius
+2nd guess = Magnificent
+3rd guess = Impressive
+4th guess = Splendid
+5th guess = Great
+6th guess = Phew
