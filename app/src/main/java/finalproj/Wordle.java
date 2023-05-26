@@ -6,16 +6,15 @@ import java.util.Random;
 public class Wordle {
     private Random rand;
     private static ArrayList<wordOTG> wordList;
-    private int index;
 
-    public Wordle(){
+    public Wordle() {
         rand = new Random();
         wordList = new ArrayList<>();
     }
 
     public Boolean addWord(String word) {
         for (wordOTG wordOTG : wordList) {
-            if(wordOTG.getWord().equalsIgnoreCase(word) == true){
+            if (wordOTG.getWord().equalsIgnoreCase(word) == true) {
                 return false;
             }
         }
@@ -24,11 +23,11 @@ public class Wordle {
         return true;
     }
 
-    public int countWords(){
+    public int countWords() {
         int numWords = 0;
-        
+
         for (wordOTG wordOTG : wordList) {
-            if(wordOTG.getWord().length() == 5){
+            if (wordOTG.getWord().length() == 5) {
                 numWords++;
             }
         }
@@ -39,37 +38,35 @@ public class Wordle {
     public Boolean ifCountSame() {
         int count = 0;
         int numWords = 0;
-        
+
         for (wordOTG wordOTG : wordList) {
-            if(wordOTG.getWord().length() == 5){
+            if (wordOTG.getWord().length() == 5) {
                 numWords++;
             }
             count++;
         }
 
-        if(numWords != count){
+        if (numWords != count) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
 
-    public void removeWord(String name){
+    public void removeWord(String word) {
         for (wordOTG wordOTG : wordList) {
-            if(wordOTG.getWord().equals(name) == true){
+            if (wordOTG.getWord().equalsIgnoreCase(word) == true) {
                 wordList.remove(wordOTG);
             }
         }
     }
 
-    public void clearList(){
+    public void clearList() {
         wordList.clear();
     }
 
-    public String selectWord(){
+    public String selectWord() {
         int choice = rand.nextInt(0, wordList.size());
-        index = choice;
-        wordList.get(choice).setChosenWord(true);
         String wordOTD = wordList.get(choice).getWord();
         return wordOTD;
     }

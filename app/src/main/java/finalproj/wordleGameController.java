@@ -1,30 +1,45 @@
 package finalproj;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class wordleGameController {
-    //Row 1
+    // Row 1
     @FXML
     private Label letter1, letter2, letter3, letter4, letter5;
-    //Row 2
+    // Row 2
     @FXML
     private Label letter6, letter7, letter8, letter9, letter10;
-    //Row 3
+    // Row 3
     @FXML
     private Label letter11, letter12, letter13, letter14, letter15;
-    //Row 4
+    // Row 4
     @FXML
     private Label letter16, letter17, letter18, letter19, letter20;
-    //Row 5
+    // Row 5
     @FXML
     private Label letter21, letter22, letter23, letter24, letter25;
-    //Row 6
+    // Row 6
     @FXML
     private Label letter26, letter27, letter28, letter29, letter30;
-    
+
     @FXML
     private Label label;
 
@@ -37,15 +52,12 @@ public class wordleGameController {
     @FXML
     private Button btnGuess, btnStart;
 
-
     wordleTxtController wtc = new wordleTxtController();
 
-    private boolean check1 = false, check2 = false, check3 = false, 
-                    check4 = false, check5 = false, check6 = false;
+    private boolean check1 = false, check2 = false, check3 = false,
+            check4 = false, check5 = false, check6 = false;
 
     private String chosenWord;
-
-
 
     @FXML
     public void onBtnStart() {
@@ -58,126 +70,157 @@ public class wordleGameController {
 
     @FXML
     public void onBtnGuess(ActionEvent event) {
-    
+
         String guess = txtGuess.getText();
 
-        if(check1) {
+        //Row 1
+        if (check1) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
                 Label letter = getLabelByIndex(i);
 
-                letter.setText(guess.toUpperCase().substring(i, i+1));
+                letter.setText(guess.toUpperCase().substring(i, i + 1));
 
-                if(guess.charAt(i) == chosenWord.charAt(i)){
+                if (guess.charAt(i) == chosenWord.charAt(i)) {
                     count++;
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
-                } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
+                } else if (chosenWord.indexOf(guess.substring(i, i + 1)) != -1) {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
                 } else {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
                 }
             }
-            
-            check1 = false;
-            check2 = true;
-        } else if(check2) {
+
+            if (checkIfCorrect(count)) {
+                correctAlert();
+            } else {
+                check1 = false;
+                check2 = true;
+            }
+        
+        //Row 2
+        } else if (check2) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
-                Label letter = getLabelByIndex(i+5);
+                Label letter = getLabelByIndex(i + 5);
 
-                letter.setText(guess.toUpperCase().substring(i, i+1));
+                letter.setText(guess.toUpperCase().substring(i, i + 1));
 
-                if(guess.charAt(i) == chosenWord.charAt(i)){
+                if (guess.charAt(i) == chosenWord.charAt(i)) {
                     count++;
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
-                } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
+                } else if (chosenWord.indexOf(guess.substring(i, i + 1)) != -1) {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
                 } else {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
                 }
             }
 
-            check2 = false;
-            check3 = true;
-        } else if(check3) {
+            if (checkIfCorrect(count)) {
+                correctAlert();
+            } else {
+                check2 = false;
+                check3 = true;
+            }
+        
+        //Row 3
+        } else if (check3) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
-                Label letter = getLabelByIndex(i+10);
+                Label letter = getLabelByIndex(i + 10);
 
-                letter.setText(guess.toUpperCase().substring(i, i+1));
+                letter.setText(guess.toUpperCase().substring(i, i + 1));
 
-                if(guess.charAt(i) == chosenWord.charAt(i)){
+                if (guess.charAt(i) == chosenWord.charAt(i)) {
                     count++;
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
-                } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
+                } else if (chosenWord.indexOf(guess.substring(i, i + 1)) != -1) {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
                 } else {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
                 }
             }
 
-            check3 = false;
-            check4 = true;
-        } else if(check4) {
+            if (checkIfCorrect(count)) {
+                correctAlert();
+            } else {
+                check3 = false;
+                check4 = true;
+            }
+
+        //Row 4
+        } else if (check4) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
-                Label letter = getLabelByIndex(i+15);
+                Label letter = getLabelByIndex(i + 15);
 
-                letter.setText(guess.toUpperCase().substring(i, i+1));
+                letter.setText(guess.toUpperCase().substring(i, i + 1));
 
-                if(guess.charAt(i) == chosenWord.charAt(i)){
+                if (guess.charAt(i) == chosenWord.charAt(i)) {
                     count++;
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
-                } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
+                } else if (chosenWord.indexOf(guess.substring(i, i + 1)) != -1) {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
                 } else {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
                 }
             }
 
-            check4 = false;
-            check5 = true;
-        } else if(check5) {
+            if (checkIfCorrect(count)) {
+                correctAlert();
+            } else {
+                check4 = false;
+                check5 = true;
+            }
+
+        //Row 5
+        } else if (check5) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
-                Label letter = getLabelByIndex(i+20);
+                Label letter = getLabelByIndex(i + 20);
 
-                letter.setText(guess.toUpperCase().substring(i, i+1));
+                letter.setText(guess.toUpperCase().substring(i, i + 1));
 
-                if(guess.charAt(i) == chosenWord.charAt(i)){
+                if (guess.charAt(i) == chosenWord.charAt(i)) {
                     count++;
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
-                } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
+                } else if (chosenWord.indexOf(guess.substring(i, i + 1)) != -1) {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
                 } else {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
                 }
             }
 
-            if(checkIfCorrect(count) == true){
-
+            if (checkIfCorrect(count) == true) {
+                correctAlert();
             } else {
                 check5 = false;
                 check6 = true;
             }
+
+        //Row 6
         } else if (check6) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
-                Label letter = getLabelByIndex(i+25);
+                Label letter = getLabelByIndex(i + 25);
 
-                letter.setText(guess.toUpperCase().substring(i, i+1));
+                letter.setText(guess.toUpperCase().substring(i, i + 1));
 
-                if(guess.charAt(i) == chosenWord.charAt(i)){
+                if (guess.charAt(i) == chosenWord.charAt(i)) {
                     count++;
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #528d4e;");
-                } else if(chosenWord.indexOf(guess.substring(i, i+1)) != -1){
+                } else if (chosenWord.indexOf(guess.substring(i, i + 1)) != -1) {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #b59f3a;");
                 } else {
                     letter.setStyle("-fx-alignment: center; -fx-background-color: #3a3b3c;");
                 }
             }
 
-            checkIfCorrect(count);
+            if (checkIfCorrect(count)) {
+                correctAlert();
+            } else {
+                
+            }
         } else {
 
         }
@@ -190,21 +233,122 @@ public class wordleGameController {
         label.setOpacity(1);
     }
 
-
     private boolean checkIfCorrect(int i) {
-        String phrase = "";
         if (i == 5) {
             return true;
         } else {
-            if(check6) {
-                
+            if (check6) {
+                Dialog<ButtonType> dialog = new Dialog<>();
+                dialog.setTitle("Unfortunate");
+        
+                Image img = new Image(getClass().getResourceAsStream(""));
+                ImageView imgView = new ImageView(img);
+                imgView.setFitWidth(100);
+                imgView.setPreserveRatio(true);
+        
+                Text txtNode = new Text("Good try, the word to guess was " + chosenWord + ". would you like to Play Again or Quit the Game?");
+                txtNode.setTextAlignment(TextAlignment.LEFT);
+        
+                HBox hbox = new HBox(10);
+                hbox.setAlignment(Pos.CENTER_LEFT);
+                hbox.getChildren().addAll(imgView, txtNode);
+        
+                ButtonType playAgain = new ButtonType("Play Again", ButtonData.OK_DONE);
+                ButtonType quit = new ButtonType("Quit Wordle", ButtonData.CANCEL_CLOSE);
+        
+                DialogPane dp = dialog.getDialogPane();
+                dp.setContent(hbox);
+                dp.getButtonTypes().addAll(playAgain, quit);
+        
+                dialog.showAndWait().ifPresent(ButtonType -> {
+                    if (ButtonType == playAgain) {
+                        wtc.wordle.removeWord(chosenWord);
+                        wtc.openWordleBoard();
+                    } else if (ButtonType == quit) {
+                        Platform.exit();
+                        wtc.quitTxtArea();
+                    }
+                });
                 check6 = false;
             }
+            return false;
         }
-        return true;
     }
 
-    private Label getLabelByIndex(int i){
+    private void correctAlert(){
+        String message = message();
+        int trys = numTrys();
+
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Congratulations");
+
+        Image img = new Image(getClass().getResourceAsStream(""));
+        ImageView imgView = new ImageView(img);
+        imgView.setFitWidth(100);
+        imgView.setPreserveRatio(true);
+
+        Text txtNode = new Text(message + ". You got it in " + trys + " trys, would you like to Play Again or Quit the Game?");
+        txtNode.setTextAlignment(TextAlignment.LEFT);
+
+        HBox hbox = new HBox(10);
+        hbox.setAlignment(Pos.CENTER_LEFT);
+        hbox.getChildren().addAll(imgView, txtNode);
+
+        ButtonType playAgain = new ButtonType("Play Again", ButtonData.OK_DONE);
+        ButtonType quit = new ButtonType("Quit Wordle", ButtonData.CANCEL_CLOSE);
+
+        DialogPane dp = dialog.getDialogPane();
+        dp.setContent(hbox);
+        dp.getButtonTypes().addAll(playAgain, quit);
+
+        dialog.showAndWait().ifPresent(ButtonType -> {
+            if (ButtonType == playAgain) {
+                wtc.wordle.removeWord(chosenWord);
+                wtc.openWordleBoard();
+            } else if (ButtonType == quit) {
+                Platform.exit();
+                wtc.quitTxtArea();
+            }
+        });
+    }
+
+    private int numTrys(){
+        int num = 0;
+        if (check1) {
+            num = 1;
+        } else if (check2) {
+            num = 2;
+        } else if(check3) {
+            num = 3;
+        } else if(check4) {
+            num = 4;
+        } else if(check5) {
+            num = 5;
+        } else if(check6) {
+            num = 6;
+        }
+        return num;
+    }
+
+    private String message(){
+        String message = "";
+        if (check1) {
+            message = "Genius";
+        } else if (check2) {
+            message = "Magnificent";
+        } else if(check3) {
+            message = "Impressive";
+        } else if(check4) {
+            message = "Splendid";
+        } else if(check5) {
+            message = "Great";
+        } else if(check6) {
+            message = "Phew";
+        }
+        return message;
+    }
+
+    private Label getLabelByIndex(int i) {
         switch (i) {
             case 0:
                 return letter1;

@@ -1,7 +1,6 @@
 package finalproj;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Optional;
 import javafx.scene.Node;
 import javafx.application.Platform;
@@ -17,7 +16,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 
 public class wordleTxtController {
     @FXML
@@ -34,7 +32,7 @@ public class wordleTxtController {
     static Wordle wordle = new Wordle();
 
     @FXML
-    public void onBtnEnter(ActionEvent event) throws IOException{
+    public void onBtnEnter(ActionEvent event) throws IOException {
         source = (Node) event.getSource();
         currentStage = (Stage) source.getScene().getWindow();
         int count = 0;
@@ -47,7 +45,7 @@ public class wordleTxtController {
         for (String line : lines) {
             String[] words = line.split("\\s+");
             for (String word : words) {
-                if(wordle.addWord(word) == false) {
+                if (wordle.addWord(word) == false) {
                     check = false;
                     reoccuring = word;
                     alert = new Alert(AlertType.ERROR);
@@ -62,17 +60,19 @@ public class wordleTxtController {
             }
         }
 
-        if(!wordle.ifCountSame() && check == true) {
+        if (!wordle.ifCountSame() && check == true) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Error: 1 or more words are not equal to 5 letters");
-            alert.setContentText("There are " + (count - wordle.countWords()) + " word(s) that have more or less than 5 letters, please change the words");
+            alert.setContentText("There are " + (count - wordle.countWords())
+                    + " word(s) that have more or less than 5 letters, please change the words");
             alert.show();
             wordle.clearList();
-        }else if (wordle.ifCountSame() == true && check == true){
+        } else if (wordle.ifCountSame() && check == true) {
             alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
-            alert.setContentText("There are " + wordle.countWords() + " words in the list, would you like to play with these words or edit the list?");
+            alert.setContentText("There are " + wordle.countWords()
+                    + " words in the list, would you like to play with these words or edit the list?");
 
             ButtonType playBtn = new ButtonType("Play Wordle", ButtonBar.ButtonData.OK_DONE);
             ButtonType closeBtn = new ButtonType("Re-Edit Words", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -88,7 +88,7 @@ public class wordleTxtController {
 
             }
         } else {
-            
+
         }
     }
 
@@ -96,7 +96,11 @@ public class wordleTxtController {
         currentStage.hide();
     }
 
-    private void openWordleBoard() {
+    void quitTxtArea() {
+        Platform.exit();
+    }
+
+    void openWordleBoard() {
         try {
             FXMLLoader fxml = new FXMLLoader(getClass().getResource("wordleGameplay-view.fxml"));
             Parent root = fxml.load();
