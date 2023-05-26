@@ -330,7 +330,6 @@ public class wordleGameController {
         dialog.showAndWait().ifPresent(ButtonType -> {
             if (ButtonType == playAgain) {
                 wtc.wordle.removeWord(chosenWord);
-                System.out.println("hi" + wtc.wordle.wordList);
                 for (int i = 0; i < 30; i++) {
                     Label letter = getLabelByIndex(i);
                     letter.setStyle(
