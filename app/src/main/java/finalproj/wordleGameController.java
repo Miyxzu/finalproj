@@ -1,18 +1,24 @@
 package finalproj;
 
+import java.io.IOError;
+import java.io.IOException;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -48,6 +54,12 @@ public class wordleGameController {
     @FXML
     private Button btnGuess, btnStart;
 
+    private Stage primaryStage;
+
+    private Stage currentStage;
+
+    private Node source;
+
     wordleTxtController wtc = new wordleTxtController();
 
     private boolean check1 = false, check2 = false, check3 = false,
@@ -56,7 +68,9 @@ public class wordleGameController {
     private String chosenWord;
 
     @FXML
-    public void onBtnStart() {
+    public void onBtnStart(ActionEvent event) {
+        source = (Node) event.getSource();
+        currentStage = (Stage) source.getScene().getWindow();
         chosenWord = wtc.wordle.selectWord();
         btnStart.setDisable(true);
         btnStart.setVisible(false);
@@ -89,6 +103,7 @@ public class wordleGameController {
 
             if (checkIfCorrect(count)) {
                 correctAlert();
+                check1 = false;
             } else {
                 check1 = false;
                 check2 = true;
@@ -114,6 +129,7 @@ public class wordleGameController {
 
             if (checkIfCorrect(count)) {
                 correctAlert();
+                check2 = false;
             } else {
                 check2 = false;
                 check3 = true;
@@ -139,6 +155,7 @@ public class wordleGameController {
 
             if (checkIfCorrect(count)) {
                 correctAlert();
+                check3 = false;
             } else {
                 check3 = false;
                 check4 = true;
@@ -164,6 +181,7 @@ public class wordleGameController {
 
             if (checkIfCorrect(count)) {
                 correctAlert();
+                check4 = false;
             } else {
                 check4 = false;
                 check5 = true;
@@ -189,6 +207,7 @@ public class wordleGameController {
 
             if (checkIfCorrect(count) == true) {
                 correctAlert();
+                check5 = false;
             } else {
                 check5 = false;
                 check6 = true;
@@ -214,6 +233,7 @@ public class wordleGameController {
 
             if (checkIfCorrect(count)) {
                 correctAlert();
+                check6 = false;
             } else {
 
             }
@@ -252,18 +272,26 @@ public class wordleGameController {
 
                 ButtonType playAgain = new ButtonType("Play Again", ButtonData.OK_DONE);
                 ButtonType quit = new ButtonType("Quit Wordle", ButtonData.CANCEL_CLOSE);
+                ButtonType editTextArea = new ButtonType("Re-Edit List", ButtonData.OK_DONE);
 
                 DialogPane dp = dialog.getDialogPane();
                 dp.setContent(hbox);
-                dp.getButtonTypes().addAll(playAgain, quit);
+                dp.getButtonTypes().addAll(editTextArea, quit, playAgain);
 
                 dialog.showAndWait().ifPresent(ButtonType -> {
                     if (ButtonType == playAgain) {
                         wtc.wordle.removeWord(chosenWord);
-                        wtc.openWordleBoard();
+                        for (int j = 0; j < 30; j++) {
+                            Label letter = getLabelByIndex(j);
+                            letter.setStyle("-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;");
+                        }
+                        check1 = true;
+                        chosenWord = wtc.wordle.selectWord();
                     } else if (ButtonType == quit) {
                         Platform.exit();
-                        wtc.quitTxtArea();
+                    } else if (ButtonType == editTextArea) {
+                        openTextEditScene();
+                        currentStage.close();
                     }
                 });
                 check6 = false;
@@ -293,20 +321,46 @@ public class wordleGameController {
 
         ButtonType playAgain = new ButtonType("Play Again", ButtonData.OK_DONE);
         ButtonType quit = new ButtonType("Quit Wordle", ButtonData.CANCEL_CLOSE);
+        ButtonType editTextArea = new ButtonType("Re-Edit List", ButtonData.OK_DONE);
 
         DialogPane dp = dialog.getDialogPane();
         dp.setContent(hbox);
-        dp.getButtonTypes().addAll(playAgain, quit);
+        dp.getButtonTypes().addAll(editTextArea, quit, playAgain);
 
         dialog.showAndWait().ifPresent(ButtonType -> {
             if (ButtonType == playAgain) {
                 wtc.wordle.removeWord(chosenWord);
-                wtc.openWordleBoard();
+                System.out.println("hi" + wtc.wordle.wordList);
+                for (int i = 0; i < 30; i++) {
+                    Label letter = getLabelByIndex(i);
+                    letter.setStyle("-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;");
+                    letter.setText("");
+                }
+                check1 = true;
+                chosenWord = wtc.wordle.selectWord();
             } else if (ButtonType == quit) {
                 Platform.exit();
-                wtc.quitTxtArea();
+            } else if (ButtonType == editTextArea) {
+                openTextEditScene();
+                currentStage.close();
             }
         });
+    }
+
+    private void openTextEditScene(){
+        try {
+            FXMLLoader fxml = new FXMLLoader(getClass().getResource("wordleTextArea-view.fxml"));
+            Parent root = fxml.load();
+            wordleTxtController wordleBoard = fxml.getController();
+            Scene scene = new Scene(root, 600, 400);
+            Stage editStage = new Stage(StageStyle.DECORATED);
+            editStage.setScene(scene);
+            editStage.show();
+            primaryStage = editStage;
+        } catch (IOException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
     }
 
     private int numTrys() {

@@ -80,8 +80,8 @@ public class wordleTxtController {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == playBtn) {
-                openWordleBoard();
-                hideScene();
+                openWordleScene();
+                currentStage.close();
             } else if (result.isPresent() && result.get() == closeBtn) {
                 wordle.clearList();
             } else {
@@ -92,15 +92,7 @@ public class wordleTxtController {
         }
     }
 
-    private void hideScene() {
-        currentStage.hide();
-    }
-
-    void quitTxtArea() {
-        Platform.exit();
-    }
-
-    void openWordleBoard() {
+    void openWordleScene() {
         try {
             FXMLLoader fxml = new FXMLLoader(getClass().getResource("wordleGameplay-view.fxml"));
             Parent root = fxml.load();
