@@ -1,13 +1,9 @@
 package finalproj;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -73,7 +69,7 @@ public class wordleGameController {
 
         String guess = txtGuess.getText();
 
-        //Row 1
+        // Row 1
         if (check1) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
@@ -97,8 +93,8 @@ public class wordleGameController {
                 check1 = false;
                 check2 = true;
             }
-        
-        //Row 2
+
+            // Row 2
         } else if (check2) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
@@ -122,8 +118,8 @@ public class wordleGameController {
                 check2 = false;
                 check3 = true;
             }
-        
-        //Row 3
+
+            // Row 3
         } else if (check3) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
@@ -148,7 +144,7 @@ public class wordleGameController {
                 check4 = true;
             }
 
-        //Row 4
+            // Row 4
         } else if (check4) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
@@ -173,7 +169,7 @@ public class wordleGameController {
                 check5 = true;
             }
 
-        //Row 5
+            // Row 5
         } else if (check5) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
@@ -198,7 +194,7 @@ public class wordleGameController {
                 check6 = true;
             }
 
-        //Row 6
+            // Row 6
         } else if (check6) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
@@ -219,7 +215,7 @@ public class wordleGameController {
             if (checkIfCorrect(count)) {
                 correctAlert();
             } else {
-                
+
             }
         } else {
 
@@ -240,26 +236,27 @@ public class wordleGameController {
             if (check6) {
                 Dialog<ButtonType> dialog = new Dialog<>();
                 dialog.setTitle("Unfortunate");
-        
+
                 Image img = new Image(getClass().getResourceAsStream(""));
                 ImageView imgView = new ImageView(img);
                 imgView.setFitWidth(100);
                 imgView.setPreserveRatio(true);
-        
-                Text txtNode = new Text("Good try, the word to guess was " + chosenWord + ". would you like to Play Again or Quit the Game?");
+
+                Text txtNode = new Text("Good try, the word to guess was " + chosenWord.toUpperCase()
+                        + ". would you like to Play Again or Quit the Game?");
                 txtNode.setTextAlignment(TextAlignment.LEFT);
-        
+
                 HBox hbox = new HBox(10);
                 hbox.setAlignment(Pos.CENTER_LEFT);
                 hbox.getChildren().addAll(imgView, txtNode);
-        
+
                 ButtonType playAgain = new ButtonType("Play Again", ButtonData.OK_DONE);
                 ButtonType quit = new ButtonType("Quit Wordle", ButtonData.CANCEL_CLOSE);
-        
+
                 DialogPane dp = dialog.getDialogPane();
                 dp.setContent(hbox);
                 dp.getButtonTypes().addAll(playAgain, quit);
-        
+
                 dialog.showAndWait().ifPresent(ButtonType -> {
                     if (ButtonType == playAgain) {
                         wtc.wordle.removeWord(chosenWord);
@@ -275,7 +272,7 @@ public class wordleGameController {
         }
     }
 
-    private void correctAlert(){
+    private void correctAlert() {
         String message = message();
         int trys = numTrys();
 
@@ -312,37 +309,37 @@ public class wordleGameController {
         });
     }
 
-    private int numTrys(){
+    private int numTrys() {
         int num = 0;
         if (check1) {
             num = 1;
         } else if (check2) {
             num = 2;
-        } else if(check3) {
+        } else if (check3) {
             num = 3;
-        } else if(check4) {
+        } else if (check4) {
             num = 4;
-        } else if(check5) {
+        } else if (check5) {
             num = 5;
-        } else if(check6) {
+        } else if (check6) {
             num = 6;
         }
         return num;
     }
 
-    private String message(){
+    private String message() {
         String message = "";
         if (check1) {
             message = "Genius";
         } else if (check2) {
             message = "Magnificent";
-        } else if(check3) {
+        } else if (check3) {
             message = "Impressive";
-        } else if(check4) {
+        } else if (check4) {
             message = "Splendid";
-        } else if(check5) {
+        } else if (check5) {
             message = "Great";
-        } else if(check6) {
+        } else if (check6) {
             message = "Phew";
         }
         return message;
