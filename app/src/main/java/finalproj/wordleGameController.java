@@ -1,8 +1,6 @@
 package finalproj;
 
-import java.io.IOError;
 import java.io.IOException;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -283,7 +281,8 @@ public class wordleGameController {
                         wtc.wordle.removeWord(chosenWord);
                         for (int j = 0; j < 30; j++) {
                             Label letter = getLabelByIndex(j);
-                            letter.setStyle("-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;");
+                            letter.setStyle(
+                                    "-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;");
                         }
                         check1 = true;
                         chosenWord = wtc.wordle.selectWord();
@@ -312,7 +311,8 @@ public class wordleGameController {
         imgView.setFitWidth(100);
         imgView.setPreserveRatio(true);
 
-        Text txtNode = new Text(message + ". You got it in " + trys + " trys, would you like to Play Again or Quit the Game?");
+        Text txtNode = new Text(
+                message + ". You got it in " + trys + " trys, would you like to Play Again or Quit the Game?");
         txtNode.setTextAlignment(TextAlignment.LEFT);
 
         HBox hbox = new HBox(10);
@@ -333,7 +333,8 @@ public class wordleGameController {
                 System.out.println("hi" + wtc.wordle.wordList);
                 for (int i = 0; i < 30; i++) {
                     Label letter = getLabelByIndex(i);
-                    letter.setStyle("-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;");
+                    letter.setStyle(
+                            "-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;");
                     letter.setText("");
                 }
                 check1 = true;
@@ -347,7 +348,7 @@ public class wordleGameController {
         });
     }
 
-    private void openTextEditScene(){
+    private void openTextEditScene() {
         try {
             FXMLLoader fxml = new FXMLLoader(getClass().getResource("wordleTextArea-view.fxml"));
             Parent root = fxml.load();
