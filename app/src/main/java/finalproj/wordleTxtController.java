@@ -29,7 +29,7 @@ public class wordleTxtController {
 
     private Stage currentStage;
 
-    static Wordle wordle = new Wordle();
+    Wordle wordle = new Wordle();
 
     @FXML
     public void onBtnEnter(ActionEvent event) throws IOException {
@@ -68,7 +68,8 @@ public class wordleTxtController {
                     + " word(s) that have more or less than 5 letters, please change the words");
             alert.show();
             wordle.clearList();
-        } else if (wordle.ifCountSame() && check == true) {
+        }
+        if (wordle.ifCountSame() && check == true) {
             alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
             alert.setContentText("There are " + wordle.countWords()
@@ -82,13 +83,10 @@ public class wordleTxtController {
             if (result.isPresent() && result.get() == playBtn) {
                 openWordleScene();
                 currentStage.close();
-            } else if (result.isPresent() && result.get() == closeBtn) {
-                wordle.clearList();
-            } else {
-
             }
-        } else {
-
+            if (result.isPresent() && result.get() == closeBtn) {
+                wordle.clearList();
+            }
         }
     }
 

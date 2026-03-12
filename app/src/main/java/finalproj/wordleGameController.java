@@ -23,22 +23,22 @@ import javafx.scene.image.ImageView;
 public class wordleGameController {
     // Row 1
     @FXML
-    private Label letter1, letter2, letter3, letter4, letter5;
+    private Label char00, char10, char20, char30, char40;
     // Row 2
     @FXML
-    private Label letter6, letter7, letter8, letter9, letter10;
+    private Label char01, char11, char21, char31, char41;
     // Row 3
     @FXML
-    private Label letter11, letter12, letter13, letter14, letter15;
+    private Label char02, char12, char22, char32, char42;
     // Row 4
     @FXML
-    private Label letter16, letter17, letter18, letter19, letter20;
+    private Label char03, char13, char23, char33, char43;
     // Row 5
     @FXML
-    private Label letter21, letter22, letter23, letter24, letter25;
+    private Label char04, char14, char24, char34, char44;
     // Row 6
     @FXML
-    private Label letter26, letter27, letter28, letter29, letter30;
+    private Label char05, char15, char25, char35, char45;
 
     @FXML
     private Label label;
@@ -60,8 +60,7 @@ public class wordleGameController {
 
     wordleTxtController wtc = new wordleTxtController();
 
-    private boolean check1 = false, check2 = false, check3 = false,
-            check4 = false, check5 = false, check6 = false;
+    private boolean[] checkArray = { false, false, false, false, false, false };
 
     private String chosenWord;
 
@@ -73,7 +72,7 @@ public class wordleGameController {
         btnStart.setDisable(true);
         btnStart.setVisible(false);
         setAllVisible();
-        check1 = true;
+        checkArray[0] = true;
     }
 
     @FXML
@@ -81,11 +80,20 @@ public class wordleGameController {
 
         String guess = txtGuess.getText();
 
+        if (guess.length() != 5) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error: Word is not 5 letters");
+            alert.setContentText("Please enter a word that is exactly 5 letters long");
+            alert.show();
+            return;
+        }
+
         // Row 1
-        if (check1) {
+        if (checkArray[0]) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
-                Label letter = getLabelByIndex(i);
+                Label letter = getLabelByIndex(0, i);
 
                 letter.setText(guess.toUpperCase().substring(i, i + 1));
 
@@ -101,17 +109,17 @@ public class wordleGameController {
 
             if (checkIfCorrect(count)) {
                 correctAlert();
-                check1 = false;
+                checkArray[0] = false;
             } else {
-                check1 = false;
-                check2 = true;
+                checkArray[0] = false;
+                checkArray[1] = true;
             }
 
             // Row 2
-        } else if (check2) {
+        } else if (checkArray[1]) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
-                Label letter = getLabelByIndex(i + 5);
+                Label letter = getLabelByIndex(1, i);
 
                 letter.setText(guess.toUpperCase().substring(i, i + 1));
 
@@ -127,17 +135,17 @@ public class wordleGameController {
 
             if (checkIfCorrect(count)) {
                 correctAlert();
-                check2 = false;
+                checkArray[1] = false;
             } else {
-                check2 = false;
-                check3 = true;
+                checkArray[1] = false;
+                checkArray[2] = true;
             }
 
             // Row 3
-        } else if (check3) {
+        } else if (checkArray[2]) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
-                Label letter = getLabelByIndex(i + 10);
+                Label letter = getLabelByIndex(2, i);
 
                 letter.setText(guess.toUpperCase().substring(i, i + 1));
 
@@ -153,17 +161,17 @@ public class wordleGameController {
 
             if (checkIfCorrect(count)) {
                 correctAlert();
-                check3 = false;
+                checkArray[2] = false;
             } else {
-                check3 = false;
-                check4 = true;
+                checkArray[2] = false;
+                checkArray[3] = true;
             }
 
             // Row 4
-        } else if (check4) {
+        } else if (checkArray[3]) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
-                Label letter = getLabelByIndex(i + 15);
+                Label letter = getLabelByIndex(3, i);
 
                 letter.setText(guess.toUpperCase().substring(i, i + 1));
 
@@ -179,17 +187,17 @@ public class wordleGameController {
 
             if (checkIfCorrect(count)) {
                 correctAlert();
-                check4 = false;
+                checkArray[3] = false;
             } else {
-                check4 = false;
-                check5 = true;
+                checkArray[3] = false;
+                checkArray[4] = true;
             }
 
             // Row 5
-        } else if (check5) {
+        } else if (checkArray[4]) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
-                Label letter = getLabelByIndex(i + 20);
+                Label letter = getLabelByIndex(4, i);
 
                 letter.setText(guess.toUpperCase().substring(i, i + 1));
 
@@ -205,17 +213,17 @@ public class wordleGameController {
 
             if (checkIfCorrect(count) == true) {
                 correctAlert();
-                check5 = false;
+                checkArray[4] = false;
             } else {
-                check5 = false;
-                check6 = true;
+                checkArray[4] = false;
+                checkArray[5] = true;
             }
 
             // Row 6
-        } else if (check6) {
+        } else if (checkArray[5]) {
             int count = 0;
             for (int i = 0; i < guess.length(); i++) {
-                Label letter = getLabelByIndex(i + 25);
+                Label letter = getLabelByIndex(5, i);
 
                 letter.setText(guess.toUpperCase().substring(i, i + 1));
 
@@ -231,7 +239,7 @@ public class wordleGameController {
 
             if (checkIfCorrect(count)) {
                 correctAlert();
-                check6 = false;
+                checkArray[5] = false;
             } else {
 
             }
@@ -251,11 +259,12 @@ public class wordleGameController {
         if (i == 5) {
             return true;
         } else {
-            if (check6) {
+            if (checkArray[5]) {
                 Dialog<ButtonType> dialog = new Dialog<>();
                 dialog.setTitle("Unfortunate");
 
-                Image img = new Image(getClass().getResourceAsStream("negative-squared-cross-mark-emoji-512x512-k111iswl.png"));
+                Image img = new Image(
+                        getClass().getResourceAsStream("negative-squared-cross-mark-emoji-512x512-k111iswl.png"));
                 ImageView imgView = new ImageView(img);
                 imgView.setFitWidth(100);
                 imgView.setPreserveRatio(true);
@@ -280,11 +289,11 @@ public class wordleGameController {
                     if (ButtonType == playAgain) {
                         wtc.wordle.removeWord(chosenWord);
                         for (int j = 0; j < 30; j++) {
-                            Label letter = getLabelByIndex(j);
+                            Label letter = getLabelByIndex(j / 5, j % 5);
                             letter.setStyle(
                                     "-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;");
                         }
-                        check1 = true;
+                        checkArray[0] = true;
                         chosenWord = wtc.wordle.selectWord();
                     } else if (ButtonType == quit) {
                         Platform.exit();
@@ -293,7 +302,7 @@ public class wordleGameController {
                         currentStage.close();
                     }
                 });
-                check6 = false;
+                checkArray[5] = false;
             }
             return false;
         }
@@ -331,12 +340,12 @@ public class wordleGameController {
             if (ButtonType == playAgain) {
                 wtc.wordle.removeWord(chosenWord);
                 for (int i = 0; i < 30; i++) {
-                    Label letter = getLabelByIndex(i);
+                    Label letter = getLabelByIndex(i / 5, i % 5);
                     letter.setStyle(
                             "-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;");
                     letter.setText("");
                 }
-                check1 = true;
+                checkArray[0] = true;
                 chosenWord = wtc.wordle.selectWord();
             } else if (ButtonType == quit) {
                 Platform.exit();
@@ -365,17 +374,17 @@ public class wordleGameController {
 
     private int numTrys() {
         int num = 0;
-        if (check1) {
+        if (checkArray[0]) {
             num = 1;
-        } else if (check2) {
+        } else if (checkArray[1]) {
             num = 2;
-        } else if (check3) {
+        } else if (checkArray[2]) {
             num = 3;
-        } else if (check4) {
+        } else if (checkArray[3]) {
             num = 4;
-        } else if (check5) {
+        } else if (checkArray[4]) {
             num = 5;
-        } else if (check6) {
+        } else if (checkArray[5]) {
             num = 6;
         }
         return num;
@@ -383,86 +392,102 @@ public class wordleGameController {
 
     private String message() {
         String message = "";
-        if (check1) {
+        if (checkArray[0]) {
             message = "Genius";
-        } else if (check2) {
+        } else if (checkArray[1]) {
             message = "Magnificent";
-        } else if (check3) {
+        } else if (checkArray[2]) {
             message = "Impressive";
-        } else if (check4) {
+        } else if (checkArray[3]) {
             message = "Splendid";
-        } else if (check5) {
+        } else if (checkArray[4]) {
             message = "Great";
-        } else if (check6) {
+        } else if (checkArray[5]) {
             message = "Phew";
         }
         return message;
     }
 
-    private Label getLabelByIndex(int i) {
-        switch (i) {
-            case 0:
-                return letter1;
-            case 1:
-                return letter2;
-            case 2:
-                return letter3;
-            case 3:
-                return letter4;
-            case 4:
-                return letter5;
-            case 5:
-                return letter6;
-            case 6:
-                return letter7;
-            case 7:
-                return letter8;
-            case 8:
-                return letter9;
-            case 9:
-                return letter10;
-            case 10:
-                return letter11;
-            case 11:
-                return letter12;
-            case 12:
-                return letter13;
-            case 13:
-                return letter14;
-            case 14:
-                return letter15;
-            case 15:
-                return letter16;
-            case 16:
-                return letter17;
-            case 17:
-                return letter18;
-            case 18:
-                return letter19;
-            case 19:
-                return letter20;
-            case 20:
-                return letter21;
-            case 21:
-                return letter22;
-            case 22:
-                return letter23;
-            case 23:
-                return letter24;
-            case 24:
-                return letter25;
-            case 25:
-                return letter26;
-            case 26:
-                return letter27;
-            case 27:
-                return letter28;
-            case 28:
-                return letter29;
-            case 29:
-                return letter30;
-            default:
-                return null;
+    // What it should have been if I had a brain
+    private Label getLabelByIndex(int i, int j) {
+        Label[][] labelArray = { { char00, char10, char20, char30, char40 },
+                { char01, char11, char21, char31, char41 }, { char02, char12, char22, char32, char42 },
+                { char03, char13, char23, char33, char43 }, { char04, char14, char24, char34, char44 },
+                { char05, char15, char25, char35, char45 } };
+
+        for (int x = 0; x < labelArray.length; x++) {
+            for (int y = 0; y < labelArray[x].length; y++) {
+                if (x == i && y == j) {
+                    return labelArray[x][y];
+                }
+            }
         }
+        
+        return null;
+
+        // This is fucking stupid why did I do this
+        // switch (i) {
+        // case 0:
+        // return letter1;
+        // case 1:
+        // return letter2;
+        // case 2:
+        // return letter3;
+        // case 3:
+        // return letter4;
+        // case 4:
+        // return letter5;
+        // case 5:
+        // return letter6;
+        // case 6:
+        // return letter7;
+        // case 7:
+        // return letter8;
+        // case 8:
+        // return letter9;
+        // case 9:
+        // return letter10;
+        // case 10:
+        // return letter11;
+        // case 11:
+        // return letter12;
+        // case 12:
+        // return letter13;
+        // case 13:
+        // return letter14;
+        // case 14:
+        // return letter15;
+        // case 15:
+        // return letter16;
+        // case 16:
+        // return letter17;
+        // case 17:
+        // return letter18;
+        // case 18:
+        // return letter19;
+        // case 19:
+        // return letter20;
+        // case 20:
+        // return letter21;
+        // case 21:
+        // return letter22;
+        // case 22:
+        // return letter23;
+        // case 23:
+        // return letter24;
+        // case 24:
+        // return letter25;
+        // case 25:
+        // return letter26;
+        // case 26:
+        // return letter27;
+        // case 27:
+        // return letter28;
+        // case 28:
+        // return letter29;
+        // case 29:
+        // return letter30;
+        // default:
+        // return null;
     }
 }

@@ -28,7 +28,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="letter1" prefHeight="90.0" prefWidth="90.0" style="-fx-alignment: center; -fx-background-color: #121213; -fx-border-color: #2f3030; -fx-border-width: 5px;" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font name="Helvetica Neue" size="64.0" />
                </font>
